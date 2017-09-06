@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePortal", "EmployeePortal\EmployeePortal.csproj", "{C9A4E8DF-2387-4D59-A4B9-29CDF7FAF06C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalWeb", "PortalWeb\PortalWeb.csproj", "{13459DE5-E401-42BF-8940-985518DD2C43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C9A4E8DF-2387-4D59-A4B9-29CDF7FAF06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9A4E8DF-2387-4D59-A4B9-29CDF7FAF06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9A4E8DF-2387-4D59-A4B9-29CDF7FAF06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13459DE5-E401-42BF-8940-985518DD2C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13459DE5-E401-42BF-8940-985518DD2C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13459DE5-E401-42BF-8940-985518DD2C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13459DE5-E401-42BF-8940-985518DD2C43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
