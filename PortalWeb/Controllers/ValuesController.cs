@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PortalWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ValuesController 
     {
         // GET: api/values
         [HttpGet]
