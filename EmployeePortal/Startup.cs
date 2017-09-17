@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 using EmployeePortal.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace EmployeePortal
 {
@@ -23,6 +25,7 @@ namespace EmployeePortal
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+            //env.ConfigureNLog("nlog.config");
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -40,8 +43,15 @@ namespace EmployeePortal
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug(); 
+            //loggerFactory.ConfigureNLog(env.ContentRootPath + "\\nlog.config");
+            //loggerFactory.AddNLog();
+            //app.AddNLogWeb();
+
+            loggerFactory.AddFile("d:/Logs/myapp-{Date}.txt");
+            ILogger log= loggerFactory.CreateLogger("test");
+            log.LogWarning("Test");
 
             if (env.IsDevelopment())
             {

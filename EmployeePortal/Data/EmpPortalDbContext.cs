@@ -15,5 +15,12 @@ namespace EmployeePortal.Data
         }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Designation> Designations { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().ToTable("Employees");
+            modelBuilder.Entity<Designation>().ToTable("Designations");
+        }
     }
 }

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace EmployeePortal.Models
 {
-    public class Employee
+    public class Designation
     {
         public int Id { get; set; }
 
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
 
-        public string PhoneNumber { get; set; }
-
-        public string Address { get; set; }
-
-        public int DesignationId { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string MinBand { get; set; }
     }
 }

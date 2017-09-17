@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EmployeePortal.Data;
 using EmployeePortal.Models;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeePortal.Controllers
 {
@@ -14,26 +15,27 @@ namespace EmployeePortal.Controllers
     public class ValuesController : Controller
     {
         private readonly EmpPortalDbContext _context;
-        public ValuesController(EmpPortalDbContext context)
+        private readonly ILogger<ValuesController> _logger;
+        public ValuesController(EmpPortalDbContext context, ILogger<ValuesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [HttpGet]
         public IEnumerable<Employee> Get()
         {
-            List<Employee> employees;
+            _logger.LogDebug("test log");
             EmployeeService empService = new EmployeeService(_context);
-            empService.Add(new Employee() { Id = 1, Address = "Bangalore", Name = "Mahesh", PhoneNumber = "8951287796" });
-
-            employees = empService.GetAll();
-            return employees;
+           // empService.Add(new Employee() { Id = 1, Address = "Bangalore", Name = "Mahesh", PhoneNumber = "8951287796" });
+            return empService.GetAll();
         }
 
 
 
         ~ValuesController()
         {
+            _logger.LogDebug("destructor called");
             _context.Dispose();
         }
 }
