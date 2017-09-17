@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace EmployeePortal.Data
 {
     public class EmpPortalDbContext : DbContext
-    {
+    { 
         public EmpPortalDbContext(DbContextOptions<EmpPortalDbContext> options) : base(options)
         {
 

@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using Microsoft.EntityFrameworkCore.Design;
+using System.IO;
 
 namespace EmployeePortal
 {
@@ -34,9 +36,11 @@ namespace EmployeePortal
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddDbContext<EmpPortalDbContext>(options =>
+                options.UseSqlServer(Configuration["database:connection"]));
             services.AddMvc();
-            services.AddEntityFrameworkSqlServer().AddDbContext<EmpPortalDbContext>
-            (option => option.UseSqlServer(Configuration["database:connection"]));
+            //services.AddEntityFrameworkSqlServer().AddDbContext<EmpPortalDbContext>
+            //(option => option.UseSqlServer(Configuration["database:connection"]));
 
         }
 
@@ -71,6 +75,21 @@ namespace EmployeePortal
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
+        }
+    }
+
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<EmpPortalDbContext>
+    {
+        public EmpPortalDbContext CreateDbContext(string[] args)
+        {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+            var builder = new DbContextOptionsBuilder<EmpPortalDbContext>();
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            builder.UseSqlServer(connectionString);
+            return new EmpPortalDbContext(builder.Options);
         }
     }
 }

@@ -17,5 +17,8 @@ namespace EmployeePortal.Models
         [Required]
         [StringLength(50)]
         public string MinBand { get; set; }
+
+        [Required]
+        public DateTime UpdatedOn { get; set; }
     }
 }
