@@ -31,14 +31,15 @@ namespace EmployeePortal.Controllers
             return _context.Employees;
         }
 
-        [HttpGet]
-        public Employee Get(int Id)
+        [HttpGet("{id}")]
+        public Employee Get(int id)
         {
             _logger.LogDebug("Employee Get");
-            return _context.Employees.FirstOrDefault(x => x.Id == Id);
+            return _context.Employees.FirstOrDefault(x => x.Id == id);
         }
 
-        public Employee Create (Employee request)
+        [HttpPost]
+        public Employee Create ([FromBody]Employee request)
         {
             _logger.LogInformation("Employee Create");
             _context.Employees.Add(request);
@@ -47,7 +48,7 @@ namespace EmployeePortal.Controllers
         }
 
         [HttpPut]
-        public Employee Update(Employee request)
+        public Employee Update([FromBody]Employee request)
         {
             _logger.LogInformation("Employee Update");
             _context.Entry(request).State = EntityState.Modified;
@@ -56,15 +57,14 @@ namespace EmployeePortal.Controllers
         }
 
 
-        [HttpDelete]
-        public bool Delete(int Id)
+        [HttpDelete("{id}")]
+        public Employee Delete(int id)
         {
             _logger.LogWarning("Employee Delete");
-            var emp = _context.Employees.SingleOrDefault(x => x.Id == Id);
+            var emp = _context.Employees.SingleOrDefault(x => x.Id == id);
             _context.Employees.Remove(emp);
-            return true;
+            return emp;
         }
-
 
 
         ~EmployeeController()
