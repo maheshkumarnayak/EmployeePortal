@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,7 +20,7 @@ namespace PortalWeb.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get([FromServices] int id)
+        public string Get(int id)
         {
             return "Mahesh";
         }

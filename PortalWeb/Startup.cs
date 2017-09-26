@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,9 +24,7 @@ namespace PortalWeb
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {
-
-      app.Use(async (context, next) =>
-      {
+      app.Use(async (context, next) => {
         await next();
         if (context.Response.StatusCode == 404 &&
             !Path.HasExtension(context.Request.Path.Value) &&
@@ -36,37 +34,9 @@ namespace PortalWeb
           await next();
         }
       });
-
       app.UseMvcWithDefaultRoute();
       app.UseDefaultFiles();
       app.UseStaticFiles();
-      //app.UseMvc(routes =>
-      //{
-      //  routes.MapRoute(
-      //            name: "default",
-      //            template: "{controller=Values}/{id?}");
-      //});
-
-      app.UseMvc(ConfigureRoute);
-
-      loggerFactory.AddConsole();
-
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
-      }
-
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("Hello World!");
-      });
     }
-
-    private void ConfigureRoute(IRouteBuilder routeBuilder)
-    {
-      //Home/Index 
-      routeBuilder.MapRoute("Default", "{controller = Home}/{action = Index}/{id?}");
-    }
-
   }
 }
