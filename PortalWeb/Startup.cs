@@ -24,16 +24,16 @@ namespace PortalWeb
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
     {
-      app.Use(async (context, next) => {
-        await next();
-        if (context.Response.StatusCode == 404 &&
-            !Path.HasExtension(context.Request.Path.Value) &&
-            !context.Request.Path.Value.StartsWith("/api/"))
-        {
-          context.Request.Path = "./src/index.html";
-          await next();
-        }
-      });
+      //app.Use(async (context, next) => {
+      //  await next();
+      //  if (context.Response.StatusCode == 404 &&
+      //      !Path.HasExtension(context.Request.Path.Value) &&
+      //      !context.Request.Path.Value.StartsWith("/api/"))
+      //  {
+      //    context.Request.Path = "./src/index.html";
+      //    await next();
+      //  }
+      //});
       app.UseMvcWithDefaultRoute();
       app.UseDefaultFiles();
       app.UseStaticFiles();
