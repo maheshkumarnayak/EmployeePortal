@@ -63,6 +63,7 @@ namespace EmployeePortal.Controllers
             _logger.LogWarning("Employee Delete");
             var emp = _context.Employees.SingleOrDefault(x => x.Id == id);
             _context.Employees.Remove(emp);
+            _context.SaveChanges();
             return emp;
         }
 

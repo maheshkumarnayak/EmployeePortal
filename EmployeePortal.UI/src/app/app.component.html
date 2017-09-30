@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EmployeePortal</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['/home']">Home</a></li>
+        <li><a [routerLink]="['/employee']">Employees</a></li>
+        <li><a [routerLink]="['/designation']">Designations</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="currentUser; else logoutBlock">
+        <li><a [routerLink]="['/home']">Hello {{currentUser.firstName}}</a></li>
+        <li><a [routerLink]="['/login']">Logout</a></li>
+      </ul>
+      <ng-template #logoutBlock>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a [routerLink]="['/login']">Login</a></li>
+          <li><a [routerLink]="['/register']">Register</a></li>
+        </ul>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+<div class="body-content">
+  <div class="row">
+    <alert></alert>
+    <router-outlet></router-outlet>
+  </div>
+  <hr />
+  <footer>
+    <p>
+      &copy; 2017 - EmployeePortal
+      <a href="https://www.pointblankdevelopment.com.au/blog/113/aspnet-core-angular-24-user-registration-and-login-tutorial-example" target="_top">ASP.NET Core + Angular 4</a>
+      <a href="https://www.pointblankdevelopment.com.au" target="_top">Point Blank Development Sydney</a>
+      <a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a>
+      <a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a>
+      <a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a>
+    </p>
+  </footer>
+</div>
+

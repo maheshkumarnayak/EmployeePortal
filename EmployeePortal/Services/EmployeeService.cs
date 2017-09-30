@@ -1,12 +1,16 @@
-﻿using EmployeePortal.Models;
+﻿using EmployeePortal.Data;
+using EmployeePortal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EmployeePortal.Data
+namespace EmployeePortal.Services
 {
-    public class EmployeeService
+    public interface IEmployeeService
+    {
+    }
+    public class EmployeeService : IEmployeeService
     {
         private EmpPortalDbContext _context { get; set; }
         public EmployeeService(EmpPortalDbContext context)
