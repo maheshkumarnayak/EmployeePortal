@@ -1,0 +1,20 @@
+<div class="col-md-6 col-md-offset-3">
+  <h3>All registered users:</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td>User Name</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
