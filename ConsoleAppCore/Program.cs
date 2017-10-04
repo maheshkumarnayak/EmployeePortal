@@ -1,7 +1,4 @@
-﻿using ConsoleAppCore.Factory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 
 namespace ConsoleAppCore
 {
@@ -9,8 +6,7 @@ namespace ConsoleAppCore
     {
         static void Main(string[] args)
         {
-            IFactory taskfactory = new TaskFactory();
-            ITask task= taskfactory.GetTask(TaskType.SumValueinArray);
+            ITask task = new SealedClassNdMember();
             task.Execute();
             Console.ReadKey();
         }

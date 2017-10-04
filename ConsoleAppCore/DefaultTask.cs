@@ -1,5 +1,4 @@
-﻿using ConsoleAppCore.Factory;
-using System;
+﻿using System;
 
 namespace ConsoleAppCore
 {
