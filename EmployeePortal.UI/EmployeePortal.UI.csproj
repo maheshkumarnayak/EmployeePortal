@@ -10,13 +10,17 @@
     <None Remove="src\app\components\home\home.component.ts" />
     <None Remove="src\app\components\home\index.ts" />
     <None Remove="src\app\models\employee.ts" />
+    <None Remove="src\app\modules\designation\designation.service.ts" />
     <None Remove="src\app\services\employee.service.ts" />
     <None Remove="src\app\services\token.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="src\app\modules\dashboard\components\" />
+    <Folder Include="src\app\modules\designation\components\" />
+    <Folder Include="src\app\modules\employee\components\" />
+    <Folder Include="src\app\modules\login\components\" />
     <Folder Include="src\app\pipes\" />
-    <Folder Include="src\app\modules\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -38,6 +42,8 @@
     <TypeScriptCompile Include="src\app\components\register\student.component.ts" />
     <TypeScriptCompile Include="src\app\models\designation.ts" />
     <TypeScriptCompile Include="src\app\models\employee.ts" />
+    <TypeScriptCompile Include="src\app\modules\dashboard\dashboard.service.ts" />
+    <TypeScriptCompile Include="src\app\modules\designation\designation.service.ts" />
     <TypeScriptCompile Include="src\app\services\designation.service.ts" />
     <TypeScriptCompile Include="src\app\services\employee.service.ts" />
     <TypeScriptCompile Include="src\app\services\token.service.ts" />
